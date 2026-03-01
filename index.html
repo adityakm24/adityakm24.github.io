@@ -63,6 +63,16 @@
   </script>
 </head>
 <body class="is-preload">
+  <div id="loader" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="loader-inner">
+      <div class="loader-ring" aria-hidden="true"></div>
+      <p class="loader-title">Loading</p>
+      <p class="loader-subtitle">Aditya Krishnan Mohan</p>
+      <div class="loader-track" aria-hidden="true">
+        <span class="loader-bar"></span>
+      </div>
+    </div>
+  </div>
   <div class="scroll-progress" aria-hidden="true"></div>
   <div class="noise-layer" aria-hidden="true"></div>
   <div class="scanline-layer" aria-hidden="true"></div>
@@ -208,11 +218,32 @@
   </footer>
 
   <script>
-    window.addEventListener("load", function () {
-      document.body.classList.remove("is-preload");
-    });
-
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const loader = document.getElementById("loader");
+    const dismissLoader = () => {
+      document.body.classList.remove("is-preload");
+      if (!loader || loader.classList.contains("is-hidden")) {
+        return;
+      }
+      loader.classList.add("is-hidden");
+      window.setTimeout(() => {
+        if (loader && loader.parentNode) {
+          loader.parentNode.removeChild(loader);
+        }
+      }, prefersReducedMotion ? 0 : 620);
+    };
+
+    window.addEventListener(
+      "load",
+      () => {
+        window.setTimeout(dismissLoader, prefersReducedMotion ? 0 : 380);
+      },
+      { once: true }
+    );
+
+    // Safety fallback in case third-party scripts delay load.
+    window.setTimeout(dismissLoader, 6000);
+
     const revealTargets = Array.from(document.querySelectorAll(".reveal"));
 
     if (revealTargets.length) {

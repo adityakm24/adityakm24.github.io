@@ -4,6 +4,7 @@ body {
 	overflow: auto !important;
 }
 
+#loader,
 .noise-layer,
 .scanline-layer,
 .spotlight,
