@@ -2326,6 +2326,31 @@ body::before {
 	color: #ffffff;
 }
 
+.experience-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.85rem;
+}
+
+.experience-card {
+	min-height: 11.8rem;
+	background: rgba(9, 9, 9, 0.72);
+}
+
+.experience-card h3 {
+	margin-top: 0.34rem;
+	font-family: "Cormorant Garamond", Georgia, serif;
+	font-size: 1.42rem;
+	font-style: italic;
+	line-height: 1.12;
+	color: #f7efde;
+}
+
+.experience-card p {
+	margin-top: 0.62rem;
+	color: rgba(186, 175, 150, 0.95);
+}
+
 .blog-grid {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 0.85rem;
@@ -2414,6 +2439,10 @@ body::before {
 	.blog-grid {
 		grid-template-columns: 1fr;
 	}
+
+	.experience-grid {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media screen and (max-width: 700px) {
@@ -2470,5 +2499,194 @@ body::before {
 		opacity: 1;
 		transform: none;
 		filter: none;
+	}
+}
+
+/* Section differentiation pass */
+
+#about .glass-card {
+	border-left: 3px solid rgba(246, 234, 202, 0.58);
+	background: linear-gradient(145deg, rgba(14, 14, 14, 0.86), rgba(9, 9, 9, 0.74));
+}
+
+#about .glass-card p {
+	max-width: 66ch;
+	font-size: 0.95rem;
+	line-height: 1.75;
+	color: rgba(201, 189, 162, 0.95);
+}
+
+#about .tag-list {
+	margin-top: 1.15rem;
+}
+
+#experience .experience-grid {
+	grid-template-columns: 1fr;
+	gap: 0.9rem;
+	position: relative;
+	padding-left: 2rem;
+}
+
+#experience .experience-grid::before {
+	content: "";
+	position: absolute;
+	top: 0.55rem;
+	bottom: 0.55rem;
+	left: 0.65rem;
+	width: 1px;
+	background: linear-gradient(180deg, rgba(247, 235, 203, 0.6), rgba(247, 235, 203, 0.06));
+}
+
+#experience .experience-card {
+	min-height: auto;
+	position: relative;
+}
+
+#experience .experience-card::after {
+	content: "";
+	position: absolute;
+	left: -1.62rem;
+	top: 1.08rem;
+	width: 0.62rem;
+	height: 0.62rem;
+	border-radius: 50%;
+	background: #f3ead2;
+	box-shadow: 0 0 0 2px rgba(9, 9, 9, 1), 0 0 18px rgba(243, 234, 210, 0.35);
+}
+
+#experience .experience-card h3 {
+	font-size: 1.5rem;
+}
+
+#experience .experience-card p {
+	max-width: 72ch;
+}
+
+#publication .publication-card {
+	padding: 1.8rem 1.9rem;
+	border-color: rgba(247, 235, 203, 0.36);
+	background:
+		linear-gradient(160deg, rgba(18, 18, 18, 0.88), rgba(11, 11, 11, 0.76)),
+		repeating-linear-gradient(
+			to bottom,
+			rgba(247, 235, 203, 0.05) 0px,
+			rgba(247, 235, 203, 0.05) 1px,
+			transparent 2px,
+			transparent 7px
+		);
+}
+
+#publication .publication-card h3 {
+	font-size: clamp(1.7rem, 3.8vw, 2.35rem);
+}
+
+#publication .card-actions {
+	margin-top: 1.28rem;
+	padding-top: 0.9rem;
+	border-top: 1px dashed rgba(241, 229, 196, 0.25);
+}
+
+#blogs .blog-grid {
+	grid-template-columns: 1fr;
+	gap: 0.72rem;
+}
+
+#blogs .blog-card {
+	display: grid;
+	grid-template-columns: 8.4rem 1fr;
+	grid-template-areas:
+		"meta title"
+		"meta cta";
+	gap: 0.28rem 1rem;
+	align-items: start;
+	min-height: auto;
+}
+
+#blogs .blog-card .meta {
+	grid-area: meta;
+	border-right: 1px solid rgba(239, 226, 191, 0.16);
+	padding-right: 0.85rem;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+}
+
+#blogs .blog-card h3 {
+	grid-area: title;
+	font-size: 1.2rem;
+	font-style: normal;
+	line-height: 1.25;
+}
+
+#blogs .blog-card .text-link {
+	grid-area: cta;
+	margin-top: 0.35rem;
+}
+
+#contact .contact-card {
+	background: rgba(5, 5, 5, 0.92);
+	border-color: rgba(243, 231, 197, 0.26);
+	padding-top: 2.25rem;
+	position: relative;
+}
+
+#contact .contact-card::before {
+	content: "CONTACT TERMINAL";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1.45rem;
+	display: flex;
+	align-items: center;
+	padding: 0 0.68rem;
+	font-size: 0.62rem;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: rgba(248, 238, 214, 0.76);
+	border-bottom: 1px solid rgba(243, 231, 197, 0.2);
+	background: rgba(255, 255, 255, 0.02);
+}
+
+#contact .contact-card p {
+	font-size: 0.88rem;
+	color: rgba(194, 182, 154, 0.95);
+}
+
+#contact .card-actions {
+	margin-top: 0.95rem;
+	padding-top: 0.9rem;
+	border-top: 1px solid rgba(241, 228, 195, 0.16);
+}
+
+@media screen and (max-width: 980px) {
+	#blogs .blog-card {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"meta"
+			"title"
+			"cta";
+	}
+
+	#blogs .blog-card .meta {
+		border-right: 0;
+		padding-right: 0;
+		border-bottom: 1px solid rgba(239, 226, 191, 0.14);
+		padding-bottom: 0.45rem;
+		margin-bottom: 0.25rem;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	#experience .experience-grid {
+		padding-left: 1.45rem;
+	}
+
+	#experience .experience-card::after {
+		left: -1.18rem;
+	}
+
+	#publication .publication-card {
+		padding: 1.25rem;
 	}
 }
